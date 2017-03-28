@@ -1,0 +1,17 @@
+<header-title titulo="Tarefas"></header-title>
+<form name="categoriaForm"class="row" ng-submit="categoriaController.addCategoria()">
+
+	<div class="form-group">
+		<input type="text" name="newCategoria" class="form-control" ng-model="categoriaController.categoria" placeholder="Nova Categoria" required/>
+	</div>
+
+	<div class="form-group">
+		<button class="btn btn-default btn-block" ng-disabled="{{categoriaForm.$invalid}}">Nova Categoria</button>
+	</div>
+
+	<div class="form-group">
+		<a class="btn btn-danger btn-block" ui-sref="newTarefa">Voltar</a>
+	</div>
+
+</form>
+<footer-title titulo="Fim"></footer-title>

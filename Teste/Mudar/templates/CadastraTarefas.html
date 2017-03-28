@@ -1,0 +1,33 @@
+<header-title titulo="Tarefas"></header-title>
+<form name="tarefaForm" class="row" ng-submit="formTarefaController.addTarefa()">
+
+	<div class="form-group">
+
+		<select name="cats" class="form-control"  
+			ng-options="categoria for categoria in formTarefaController.categorias" 
+			ng-model="formTarefaController.tarefa.categoria">
+				<option value=''>Selecione uma categoria</option>
+		</select>
+
+	</div>
+
+	<div class="form-group">
+		<a class="btn btn-default btn-block" ui-sref="newCategoria">Nova Categoria</a>
+	</div>
+
+	<div class="form-group">
+		<input type="text" class="form-control" ng-model="formTarefaController.tarefa.nome" placeholder="Nova Tarefa" required />
+	</div>
+
+	<div class="form-group">
+		<button class="form-control btn btn-primary" ng-disabled="{{tarefaForm.$invalid}}">Adicionar Tarefa</button>
+	</div>
+
+	<div class="form-group"></div>
+	
+	<div class="form-group">
+		<a class="btn btn-danger btn-block" ui-sref="home">Cancel</a>
+	</div>
+
+</form>
+<footer-title titulo="Fim"></footer-title>

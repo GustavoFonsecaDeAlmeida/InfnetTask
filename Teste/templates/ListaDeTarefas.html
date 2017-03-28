@@ -1,0 +1,51 @@
+<section>
+<header-title titulo="Tarefas"></header-title>
+			
+	<section class="panel panel-default">
+
+		<div class="panel-heading">
+	    	<span id="tarefasPendentes" class="panel-title">Tarefas Não Concluídas: {{(listaTarefaController.tarefas | filter:{status: false}).length}}</span>
+		</div>		
+		
+	    <div class="panel-body">
+		<span class="btn btn-primary" id="adicionarTarefaPlus" ui-sref="newTarefa"><span class="glyphicon glyphicon-plus"></span></span>
+
+			<ul class="list-unstyled">
+				<li ng-repeat="tarefa in listaTarefaController.tarefas | filter:{status: false} track by tarefa.id">
+					<input type="checkbox" ng-model="tarefa.status" ng-change="listaTarefaController.updateTarefaStatus(tarefa)"/>
+					<span>{{tarefa.nome + " - Categoria: " + tarefa.categoria }}</span>
+				</li>
+			</ul>
+		</div>
+
+	</section>
+
+
+	<section class="panel panel-default">
+	
+		<div class="panel-heading">
+			<span id="tarefasConcluidas" class="panel-title">Tarefas Concluídas: {{(listaTarefaController.tarefas | filter:{status: true}).length}}</span>
+					
+		</div>
+
+		<div class="panel-body">
+			<ul class="list-unstyled">
+	            <li ng-repeat="tarefa in listaTarefaController.tarefas | filter:{status: true} track by tarefa.id">
+	            	<input type="checkbox" ng-model="tarefa.status" ng-change="listaTarefaController.updateTarefaStatus(tarefa)"/>
+	            	<span ng-class="{'done':tarefa.status}">{{tarefa.nome + " - Categoria: " + tarefa.categoria }}</span>
+					
+	            </li>
+				<span class="btn btn-danger" id="limparConcluidas" ng-click="listaTarefaController.archive()"><span class="glyphicon glyphicon-minus"></span></span>
+	        </ul>
+	    </div>
+		
+
+	</section>
+			
+
+</section>
+
+<footer>
+	<hr/>
+</footer>
+<footer-title titulo="Fim"></footer-title>	
